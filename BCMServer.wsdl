@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.example.org/BCMServer/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BCMServer" targetNamespace="http://www.example.org/BCMServer/">
+    
+  <wsdl:types><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/BCMServer/">
+      <xsd:element name="getZoneNumberingProcessing">
+	<xsd:complexType>
+	  <xsd:sequence>
+	    <xsd:element name="in" type="xsd:string"></xsd:element>
+	  </xsd:sequence>
+	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getZoneWaitingTimeProcessing">
+	<xsd:complexType>
+	  <xsd:sequence>
+	    <xsd:element name="in" type="xsd:string"></xsd:element>
+	  </xsd:sequence>
+	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getProcessingValues">
+	<xsd:complexType>
+	  <xsd:sequence>
+	    <xsd:element name="in" type="xsd:string"></xsd:element>
+	  </xsd:sequence>
+	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getOneMinuteValues" type="xsd:string">
+  </xsd:element></xsd:schema></wsdl:types>
+
+  <wsdl:message name="getFlowCountingProcessingRequest">
+    <wsdl:part name="getFlowCountingProcessingRequest" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getFlowCountingProcessingResponse">
+    <wsdl:part name="getFlowCountingProcessingResponse" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getZoneNumberingProcessingRequest">
+  </wsdl:message>
+  <wsdl:message name="getZoneNumberingProcessingResponse">
+  	<wsdl:part name="getZoneNumberingProcessingResponse" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getZoneWaitingTimeProcessingRequest">
+  	<wsdl:part name="parameters" element="tns:getZoneWaitingTimeProcessing"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getZoneWaitingTimeProcessingResponse">
+  	<wsdl:part name="getZoneWaitingTimeProcessingResponse" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProcessingValuesRequest">
+  	<wsdl:part name="parameters" element="tns:getProcessingValues"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProcessingValuesResponse">
+  	<wsdl:part name="getProcessingValuesResponse" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOneMinuteValuesRequest">
+  	<wsdl:part name="TimeStr" element="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOneMinuteValuesResponse">
+  	<wsdl:part name="getOneMinuteValuesResponse" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+
+  <wsdl:portType name="BCMServer">
+    <wsdl:operation name="getFlowCountingProcessing">
+      <wsdl:output message="tns:getFlowCountingProcessingResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getZoneNumberingProcessing">
+    	<wsdl:output message="tns:getZoneNumberingProcessingResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getZoneWaitingTimeProcessing">
+    	<wsdl:output message="tns:getZoneWaitingTimeProcessingResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProcessingValues">
+    	<wsdl:output message="tns:getProcessingValuesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOneMinuteValues">
+    	<wsdl:input message="tns:getOneMinuteValuesRequest"></wsdl:input>
+    	<wsdl:output message="tns:getOneMinuteValuesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="BCMServerHTTP" type="tns:BCMServer">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="getFlowCountingProcessing">
+      <http:operation location="/getFlowCountingProcessing"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="BCMServer">
+    <wsdl:port binding="tns:BCMServerHTTP" name="BCMServerHTTP">
+      <http:address location="http://www.example.org/BTopLocalServer/BCMServerHTTP"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

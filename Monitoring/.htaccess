@@ -1,0 +1,10 @@
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+<Files "sendEmailCounting.php">
+order allow,deny
+allow from localhost 127.0.0.1
+</Files>
+
