@@ -2,12 +2,13 @@
 
 function getEditForm($object, $pageCancel, $pageAction, $params, $dataFunction, $inputFunction)
 {
-  $params = $dataFunction($params);
+  $id = $params["id"];
+  $params = call_user_func($dataFunction, $params);
   $str  = "<div id=\"form\" class=\"Boxes\">\n";
   $str .= "<h2>Edit $object</h2>\n";
   $str .= "<form action=\"$pageAction\">\n";
-  $str .= "<input type=\"hidden\" name=\"id\" value=\"" . $params["id"] . "\" />\n";
-  $str .= $inputFunction($params);
+  $str .= "<input type=\"hidden\" name=\"id\" value=\"" . $id . "\" />\n";
+  $str .= call_user_func($inputFunction, $params);
   $str .= getBluePortailInputs();
   $str .= "<div class=\"Bars\" id=\"buttons\">\n";
   $str .= "<ul>\n";
@@ -25,7 +26,7 @@ function getCreateForm($object, $pageCancel, $pageAction, $params, $inputFunctio
   $str  = "<div id=\"form\" class=\"Boxes\">\n";
   $str .= "<h2>Add a new $object</h2>\n";
   $str .= "<form action=\"$pageAction\">\n";
-  $str .= $inputFunction($params);
+  $str .= call_user_func($inputFunction, $params);
   $str .= getBluePortailInputs();
   $str .= "<div class=\"Bars\" id=\"buttons\">\n";
   $str .= "<ul>\n";
@@ -39,7 +40,7 @@ function getCreateForm($object, $pageCancel, $pageAction, $params, $inputFunctio
 
 function processUpdate($object, $pageListName, $params, $processUpdateQuery)
 {
-  $processUpdateQuery($params);
+  call_user_func($processUpdateQuery, $params);
   $str  = "<div id=\"Message\" class=\"Boxes\">\n";
   $str .= "<h2>$object updated.</h2>\n";
   $str .= "</div>\n";
@@ -48,7 +49,7 @@ function processUpdate($object, $pageListName, $params, $processUpdateQuery)
 
 function processInsert($object, $pageListName, $params, $processInsertQuery)
 {
-  $processInsertQuery($params);
+  call_user_func($processInsertQuery, $params);
   $str  = "<div id=\"Message\" class=\"Boxes\">\n";
   $str .= "<h2>$object created. Click <a href=\"" . getBluePortailURL("$pageListName?action=create") . "\">here</a> to create a new $object.</h2>\n";
   $str .= "</div>\n";
@@ -57,7 +58,7 @@ function processInsert($object, $pageListName, $params, $processInsertQuery)
 
 function processDelete($object, $pageListName, $params, $processDeleteQuery)
 {
-  $processDeleteQuery($params);
+  call_user_func($processDeleteQuery, $params);
   $str  = "<div id=\"Message\" class=\"Boxes\">\n";
   $str .= "<h2>$object deleted.</h2>\n";
   $str .= "</div>\n";
@@ -145,6 +146,12 @@ function processCalendarDeleteQuery($params)
 
 function getBTopSensorInputs($params)
 {
+  $params = array_merge(array( "clientId" => "",
+			       "channel" => 0,
+			       "counter" => 0,
+			       "host" => "",
+			       "descr" => "" ), $params);
+
   global $clang;
   $str = "<table>\n";
   $str .= "<tr><td>ClientId :</td><td><input type=\"text\" name=\"clientId\" value=\"" . htmlentities($params["clientId"]) . "\"></td></tr>\n";
@@ -268,6 +275,8 @@ function getBQueueSensorData($params)
 
 function getLocationInputs($params)
 {
+  $params = array_merge(array( "name" => ""), $params);
+
   $str = "<table>\n";
   $str .= "<tr><td>Name :</td><td><input type=\"text\" name=\"name\" value=\"" . htmlentities($params["name"]) . "\"></td></tr>\n";
   $str .= "<input type=\"hidden\" name=\"virtual\" value=\"0\">\n";
@@ -302,6 +311,8 @@ function processLocationDeleteQuery($params)
 
 function getDoorInputs($params)
 {
+  $params = array_merge(array( "name" => ""), $params);
+
   global $clang;
   $str = "<table>\n";
   $str .= "<tr><td>Name :</td><td><input type=\"text\" name=\"name\" value=\"" . htmlentities($params["name"]) . "\"></td></tr>\n";
@@ -356,6 +367,8 @@ function processDoorDeleteQuery($params)
 
 function getGroupInputs($params)
 {
+  $params = array_merge(array( "name" => ""), $params);
+
   global $clang;
   $str = "<table>\n";
 
@@ -429,6 +442,8 @@ function processGroupDeleteQuery($params)
 
 function getAreaInputs($params)
 {
+  $params = array_merge(array( "name" => "" ), $params);
+
   global $clang;
   $str = "<table>\n";
   $str .= "<tr><td>Name :</td><td><input type=\"text\" name=\"name\" value=\"" . htmlentities($params["name"]) . "\"></td></tr>\n";

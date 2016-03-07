@@ -29,24 +29,26 @@ if($params["action"] == "Apply")
     } // check if we have to insert or update  
   else if(isset($params["id"]))
     {
-      $frame = processUpdate("Group", "Groups.php", $params, processGroupUpdateQuery);
+      $frame = processUpdate("Group", "Groups.php", $params, 'processGroupUpdateQuery');
     }
   else
     {
-      $frame = processInsert("Group", "GroupsEdit.php", $params, processGroupInsertQuery);
+      $frame = processInsert("Group", "GroupsEdit.php", $params, 'processGroupInsertQuery');
     }
 }
 else if($params["action"] == "Delete")
 {
-  $frame = processDelete("Group", "Groups.php", $params, processGroupDeleteQuery);
+  $frame = processDelete("Group", "Groups.php", $params, 'processGroupDeleteQuery');
 }
 else if($params["action"] == "edit")
 {
-  $frame = getEditForm("Group", "Groups.php", "GroupsEdit.php", $params, getGroupData, getGroupInputs);
+  $frame = getEditForm("Group", "Groups.php", "GroupsEdit.php", $params, 'getGroupData', 
+		       'getGroupInputs');
 }
 else if($params["action"] == "create")
 {
-  $frame = getCreateForm("Group", "Groups.php", "GroupsEdit.php", $params, getGroupInputs);
+  $frame = getCreateForm("Group", "Groups.php", "GroupsEdit.php", 
+			 $params, 'getGroupInputs');
 }
 
 echo $frame;

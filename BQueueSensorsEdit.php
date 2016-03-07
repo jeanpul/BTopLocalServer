@@ -22,24 +22,25 @@ if($params["action"] == "Apply")
     } // check if we have to insert or update  
   else if(isset($params["id"]))
     {
-      $frame = processUpdate("B-Queue sensor", "BQueueSensors.php", $params, processBQueueSensorUpdateQuery);
+      $frame = processUpdate("B-Queue sensor", "BQueueSensors.php", $params, 'processBQueueSensorUpdateQuery');
     }
   else
     {
-      $frame = processInsert("B-Queue sensor", "BQueueSensorsEdit.php", $params, processBQueueSensorInsertQuery);
+      $frame = processInsert("B-Queue sensor", "BQueueSensorsEdit.php", $params, 'processBQueueSensorInsertQuery');
     }
 }
 else if($params["action"] == "Delete")
 {
-  $frame = processDelete("B-Queue sensor", "BQueueSensors.php", $params, processBQueueSensorDeleteQuery);
+  $frame = processDelete("B-Queue sensor", "BQueueSensors.php", $params, 'processBQueueSensorDeleteQuery');
 }
 else if($params["action"] == "edit")
 {
-  $frame = getEditForm("B-Queue sensor", "BQueueSensors.php", "BQueueSensorsEdit.php", $params, getBQueueSensorData, getBQueueSensorInputs);
+  $frame = getEditForm("B-Queue sensor", "BQueueSensors.php", "BQueueSensorsEdit.php", $params, 
+		       'getBQueueSensorData', 'getBQueueSensorInputs');
 }
 else if($params["action"] == "create")
 {
-  $frame = getCreateForm("B-Queue sensor", "BQueueSensors.php", "BQueueSensorsEdit.php", $params, getBQueueSensorInputs);
+  $frame = getCreateForm("B-Queue sensor", "BQueueSensors.php", "BQueueSensorsEdit.php", $params, 'getBQueueSensorInputs');
 }
 
 echo $frame;

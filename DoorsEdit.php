@@ -39,24 +39,24 @@ if($params["action"] == "Apply")
     }
   else if(isset($params["id"]))
     {
-      $frame = processUpdate("Door", "Doors.php", $params, processDoorUpdateQuery);
+      $frame = processUpdate("Door", "Doors.php", $params, 'processDoorUpdateQuery');
     }
   else 
     {
-      $frame = processInsert("Door", "DoorsEdit.php", $params, processDoorInsertQuery);
+      $frame = processInsert("Door", "DoorsEdit.php", $params, 'processDoorInsertQuery');
     }
 }
 else if($params["action"] == "Delete")
 {
-  $frame = processDelete("Door", "Doors.php", $params, processDoorDeleteQuery);
+  $frame = processDelete("Door", "Doors.php", $params, 'processDoorDeleteQuery');
 }
 else if($params["action"] == "edit")
 {
-  $frame = getEditForm("Door", "Doors.php", "DoorsEdit.php", $params, getDoorData, getDoorInputs);
+  $frame = getEditForm("Door", "Doors.php", "DoorsEdit.php", $params, 'getDoorData', 'getDoorInputs');
 }
 else if($params["action"] == "create")
 {
-  $frame = getCreateForm("Door", "Doors.php", "DoorsEdit.php", $params, getDoorInputs);
+  $frame = getCreateForm("Door", "Doors.php", "DoorsEdit.php", $params, 'getDoorInputs');
 }
 
 echo $frame;

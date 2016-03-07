@@ -26,24 +26,24 @@ if($params["action"] == "Apply")
     }
   else if(isset($params["id"]))
     {
-      $frame = processUpdate("Area", "Areas.php", $params, processAreaUpdateQuery);
+      $frame = processUpdate("Area", "Areas.php", $params, 'processAreaUpdateQuery');
     }
   else
     {
-      $frame = processInsert("Area", "AreasEdit.php", $params, processAreaInsertQuery);
+      $frame = processInsert("Area", "AreasEdit.php", $params, 'processAreaInsertQuery');
     }
 }
 else if($params["action"] == "Delete")
 {
-  $frame = processDelete("Area", "Areas.php", $params, processAreaDeleteQuery);
+  $frame = processDelete("Area", "Areas.php", $params, 'processAreaDeleteQuery');
 }
 else if($params["action"] == "edit")
 {
-  $frame = getEditForm("Area", "Areas.php", "AreasEdit.php", $params, getAreaData, getAreaInputs);
+  $frame = getEditForm("Area", "Areas.php", "AreasEdit.php", $params, 'getAreaData', 'getAreaInputs');
 }
 else if($params["action"] == "create")
 {
-  $frame = getCreateForm("Area", "Areas.php", "AreasEdit.php", $params, getAreaInputs);
+  $frame = getCreateForm("Area", "Areas.php", "AreasEdit.php", $params, 'getAreaInputs');
 }
 
 echo $frame;

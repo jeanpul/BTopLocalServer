@@ -15,7 +15,7 @@ $NbDoors = $clang->getNumberOfDoors();
   <tr>
 
    <td><ul>
-    <li><a id="locations" href="<? echo getBluePortailURL("Locations.php"); ?>">Locations</a></li>
+    <li><a id="locations" href="<?php echo getBluePortailURL("Locations.php"); ?>">Locations</a></li>
 
 <?php
 if($NbLocations > 1)
@@ -80,15 +80,6 @@ else
 ?>
 
 </ul></td>
-<td><ul>
-
-<?php
-
-echo "<li><a id=\"help\" target=\"_blank\" rel=\"nofollow\" href=\"" . getBluePortailURL("help.php") . "\">Inline help</a></li>\n";
-
-?>
-
-</td></ul>
 </tr>
 </table>
 

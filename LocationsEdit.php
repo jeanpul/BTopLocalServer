@@ -22,24 +22,26 @@ if($params["action"] == "Apply")
     } // check if we have to insert or update
   else if(isset($params["id"]))
     {
-      $frame = processUpdate("Location", "Locations.php", $params, processLocationUpdateQuery);
+      $frame = processUpdate("Location", "Locations.php", $params, 'processLocationUpdateQuery');
     }
   else 
     {
-      $frame = processInsert("Location", "LocationsEdit.php", $params, processLocationInsertQuery);
+      $frame = processInsert("Location", "LocationsEdit.php", $params, 'processLocationInsertQuery');
     }
 }
 else if($params["action"] == "Delete")
 {
-  $frame = processDelete("Location", "Locations.php", $params, processLocationDeleteQuery);
+  $frame = processDelete("Location", "Locations.php", $params, 'processLocationDeleteQuery');
 }
 else if($params["action"] == "edit")
 {
-  $frame = getEditForm("Location", "Locations.php", "LocationsEdit.php", $params, getLocationData, getLocationInputs);
+  $frame = getEditForm("Location", "Locations.php", "LocationsEdit.php", $params, 'getLocationData', 
+		       'getLocationInputs');
 }
 else if($params["action"] == "create")
 {
-  $frame = getCreateForm("Location", "Locations.php", "LocationsEdit.php", $params, getLocationInputs);
+  $frame = getCreateForm("Location", "Locations.php", "LocationsEdit.php", $params, 
+			 'getLocationInputs');
 }
 
 echo $frame;

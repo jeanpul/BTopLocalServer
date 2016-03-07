@@ -21,24 +21,41 @@ $NbDoors = $clang->getNumberOfDoors();
 $frame = "";
 
 $countDBInfos = $clang->getBTopCountingInfos();
+
 $frame .= "<tr><th>B-Top</th><td>" . $countDBInfos["NbEntries"] . "</td><td>" . $countDBInfos["NbProcessed"] . "</td><td>" . 
 $countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues"] . "</td></tr>\n";
 
 $countDBInfos = $clang->getLocationCountingInfos();
-$frame .= "<tr><th>Location</th><td>" . $countDBInfos["SumCumul0"] . "," . $countDBInfos["SumCumul1"] . "</td><td>" . $countDBInfos["SumExpected0"] . "," . $countDBInfos["SumExpected1"] . "</td><td>" . 
-$countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues0"] . "," . $countDBInfos["SumValues1"] . "</td></tr>\n";
+
+if(count($countDBInfos))
+  {
+    $frame .= "<tr><th>Location</th><td>" . $countDBInfos["SumCumul0"] . "," . $countDBInfos["SumCumul1"] . "</td><td>" . $countDBInfos["SumExpected0"] . "," . $countDBInfos["SumExpected1"] . "</td><td>" . 
+      $countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues0"] . "," . $countDBInfos["SumValues1"] . "</td></tr>\n";
+  }
 
 $countDBInfos = $clang->getAreaCountingInfos();
-$frame .= "<tr><th>Area</th><td>" .  $countDBInfos["SumCumul0"] . "," . $countDBInfos["SumCumul1"] . "</td><td>" . $countDBInfos["SumExpected0"] . "," . $countDBInfos["SumExpected1"] . "</td><td>" . 
-$countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues0"] . "," . $countDBInfos["SumValues1"] . "</td></tr>\n";
+
+if(count($countDBInfos))
+  {
+    $frame .= "<tr><th>Area</th><td>" .  $countDBInfos["SumCumul0"] . "," . $countDBInfos["SumCumul1"] . "</td><td>" . $countDBInfos["SumExpected0"] . "," . $countDBInfos["SumExpected1"] . "</td><td>" . 
+      $countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues0"] . "," . $countDBInfos["SumValues1"] . "</td></tr>\n";
+  }
 
 $countDBInfos = $clang->getDoorCountingInfos();
-$frame .= "<tr><th>Door</th><td>" . $countDBInfos["SumCumul0"] . "," . $countDBInfos["SumCumul1"] . "</td><td>" . $countDBInfos["SumExpected0"] . "," . $countDBInfos["SumExpected1"] . "</td><td>" . 
-$countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues0"] . "," . $countDBInfos["SumValues1"] . "</td></tr>\n";
+
+if(count($countDBInfos))
+  {
+    $frame .= "<tr><th>Door</th><td>" . $countDBInfos["SumCumul0"] . "," . $countDBInfos["SumCumul1"] . "</td><td>" . $countDBInfos["SumExpected0"] . "," . $countDBInfos["SumExpected1"] . "</td><td>" . 
+      $countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues0"] . "," . $countDBInfos["SumValues1"] . "</td></tr>\n";
+  }
 
 $countDBInfos = $clang->getGroupCountingInfos();
-$frame .= "<tr><th>Group</th><td>" . $countDBInfos["SumCumul0"] . "," . $countDBInfos["SumCumul1"] . "</td><td>" . $countDBInfos["SumExpected0"] . "," . $countDBInfos["SumExpected1"] . "</td><td>" . 
-$countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues0"] . "," . $countDBInfos["SumValues1"] . "</td></tr>\n";
+
+if(count($countDBInfos))
+  {
+    $frame .= "<tr><th>Group</th><td>" . $countDBInfos["SumCumul0"] . "," . $countDBInfos["SumCumul1"] . "</td><td>" . $countDBInfos["SumExpected0"] . "," . $countDBInfos["SumExpected1"] . "</td><td>" . 
+      $countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues0"] . "," . $countDBInfos["SumValues1"] . "</td></tr>\n";
+  }
 
 echo $frame;
 
@@ -57,16 +74,28 @@ echo $frame;
 $frame = "";
 
 $countDBInfos = $clang->getBQueueNumberingInfos();
-$frame .= "<tr><th>B-Queue</th><td>" . $countDBInfos["NbEntries"] . "</td><td>" . $countDBInfos["NbProcessed"] . "</td><td>" . 
-$countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues"] . "</td></tr>\n";
+
+if(count($countDBInfos))
+  {
+    $frame .= "<tr><th>B-Queue</th><td>" . $countDBInfos["NbEntries"] . "</td><td>" . $countDBInfos["NbProcessed"] . "</td><td>" . 
+      $countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues"] . "</td></tr>\n";
+  }
 
 $countDBInfos = $clang->getLocationNumberingInfos();
-$frame .= "<tr><th>Location</th><td>" . $countDBInfos["SumCumul"] . "</td><td>" . $countDBInfos["SumExpected"] . "</td><td>" . 
-$countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues"] . "</td></tr>\n";
+
+if(count($countDBInfos))
+  {
+    $frame .= "<tr><th>Location</th><td>" . $countDBInfos["SumCumul"] . "</td><td>" . $countDBInfos["SumExpected"] . "</td><td>" . 
+      $countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues"] . "</td></tr>\n";
+  }
 
 $countDBInfos = $clang->getAreaNumberingInfos();
-$frame .= "<tr><th>Area</th><td>" . $countDBInfos["SumCumul"] . "</td><td>" . $countDBInfos["SumExpected"] . "</td><td>" . 
-$countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues"] . "</td></tr>\n";
+
+if(count($countDBInfos))
+  {
+    $frame .= "<tr><th>Area</th><td>" . $countDBInfos["SumCumul"] . "</td><td>" . $countDBInfos["SumExpected"] . "</td><td>" . 
+      $countDBInfos["MinTime"] . "</td><td>" . $countDBInfos["MaxTime"] . "</td><td>" . $countDBInfos["SumValues"] . "</td></tr>\n";
+  }
 
 echo $frame
 
@@ -77,7 +106,7 @@ echo $frame
 
 </div>
 
-<?
+<?php
 
 echo getBackButton("index.php", "Back to Main menu");
 

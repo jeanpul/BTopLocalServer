@@ -29,24 +29,26 @@ if($params["action"] == "Apply")
 
   if(isset($params["id"]))
     {
-      $frame = processUpdate("Waiting Time", "WaitingTime.php", $params, processWaitingTimeUpdateQuery);
+      $frame = processUpdate("Waiting Time", "WaitingTime.php", $params, 'processWaitingTimeUpdateQuery');
     }
   else
     {
-      $frame = processInsert("Waiting Time", "WaitingTimeEdit.php", $params, processWaitingTimeInsertQuery);
+      $frame = processInsert("Waiting Time", "WaitingTimeEdit.php", $params, 'processWaitingTimeInsertQuery');
     }
 }
 else if($params["action"] == "Delete")
 {
-  $frame = processDelete("Waiting Time", "WaitingTime.php", $params, processWaitingTimeDeleteQuery);
+  $frame = processDelete("Waiting Time", "WaitingTime.php", $params, 'processWaitingTimeDeleteQuery');
 }
 else if($params["action"] == "edit")
 {
-  $frame = getEditForm("Waiting Time", "WaitingTime.php", "WaitingTimeEdit.php", $params, getWaitingTimeData, getWaitingTimeInputs);
+  $frame = getEditForm("Waiting Time", "WaitingTime.php", "WaitingTimeEdit.php", $params, 
+		       'getWaitingTimeData', 'getWaitingTimeInputs');
 }
 else if($params["action"] == "create")
 {
-  $frame = getCreateForm("Waiting Time", "WaitingTime.php", "WaitingTimeEdit.php", $params, getWaitingTimeInputs);
+  $frame = getCreateForm("Waiting Time", "WaitingTime.php", "WaitingTimeEdit.php", 
+			 $params, 'getWaitingTimeInputs');
 }
 
 $configDB->closeDB();

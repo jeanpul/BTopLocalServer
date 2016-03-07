@@ -28,24 +28,24 @@ if($params["action"] == "Apply")
     } // check if we have to insert or update  
   else if(isset($params["id"]))
     {
-      $frame = processUpdate("B-Top sensor", "BTopSensors.php", $params, processBTopSensorUpdateQuery);
+      $frame = processUpdate("B-Top sensor", "BTopSensors.php", $params, 'processBTopSensorUpdateQuery');
     }
   else
     {
-      $frame = processInsert("B-Top sensor", "BTopSensorsEdit.php", $params, processBTopSensorInsertQuery);
+      $frame = processInsert("B-Top sensor", "BTopSensorsEdit.php", $params, 'processBTopSensorInsertQuery');
     }
 }
 else if($params["action"] == "Delete")
 {
-  $frame = processDelete("B-Top sensor", "BTopSensors.php", $params, processBTopSensorDeleteQuery);
+  $frame = processDelete("B-Top sensor", "BTopSensors.php", $params, 'processBTopSensorDeleteQuery');
 }
 else if($params["action"] == "edit")
 {
-  $frame = getEditForm("B-Top sensor", "BTopSensors.php", "BTopSensorsEdit.php", $params, getBTopSensorData, getBTopSensorInputs);
+  $frame = getEditForm("B-Top sensor", "BTopSensors.php", "BTopSensorsEdit.php", $params, 'getBTopSensorData', 'getBTopSensorInputs');
 }
 else if($params["action"] == "create")
 {
-  $frame = getCreateForm("B-Top sensor", "BTopSensors.php", "BTopSensorsEdit.php", $params, getBTopSensorInputs);
+  $frame = getCreateForm("B-Top sensor", "BTopSensors.php", "BTopSensorsEdit.php", $params, 'getBTopSensorInputs');
 }
 
 echo $frame;
