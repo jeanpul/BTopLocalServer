@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jeanpul/ceCountLocalServer/issues"
   },
-  "homepage": "https://github.com/jeanpul/ceCountLocalServer#readme"
+  "homepage": "https://github.com/jeanpul/ceCountLocalServer#readme",
+  "devDependencies": {
+    "gh-release": "^2.0.2"
+  }
 }
